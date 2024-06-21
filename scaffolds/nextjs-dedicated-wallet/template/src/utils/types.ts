@@ -5,4 +5,4 @@ export type LoginProps = {
   setToken: Dispatch<SetStateAction<string>>
 }
 
-export type { Magic } from '../components/magic/MagicProvider'
+export type { Magic } from '@/hooks/MagicProvider'

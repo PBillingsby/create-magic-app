@@ -1,5 +1,5 @@
 import { LoginProps } from '@/utils/types';
-import { useMagic } from '../MagicProvider';
+import { useMagic } from '@/hooks/MagicProvider';
 import { useEffect, useState } from 'react';
 import { saveToken } from '@/utils/common';
 import Spinner from '@/components/ui/Spinner';
@@ -22,8 +22,15 @@ const Discord = ({ token, setToken }: LoginProps) => {
       try {
         if (magic) {
           const result = await magic?.oauth.getRedirectResult();
+<<<<<<< HEAD
           //do stuff with user profile data
           saveToken(result.magic.idToken, setToken, 'SOCIAL');
+=======
+          const metadata = await magic?.user.getInfo();
+          if (!metadata?.publicAddress) return;
+          setToken(result.magic.idToken);
+          saveUserInfo(result.magic.idToken, 'SOCIAL', metadata?.publicAddress);
+>>>>>>> 6f10e7a (update paths for magic provider)
           setLoadingFlag('false');
         }
       } catch (e) {

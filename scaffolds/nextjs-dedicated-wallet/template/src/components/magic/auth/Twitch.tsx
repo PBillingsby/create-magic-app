@@ -1,5 +1,5 @@
 import { LoginProps } from '@/utils/types';
-import { useMagic } from '../MagicProvider';
+import { useMagic } from '@/hooks/MagicProvider';
 import { useEffect, useState } from 'react';
 import { saveToken } from '@/utils/common';
 import Spinner from '../../ui/Spinner';

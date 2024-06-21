@@ -2,7 +2,8 @@ import { useCallback, useEffect, useMemo, useState } from 'react';
 import Divider from '@/components/ui/Divider';
 import { LoginProps } from '@/utils/types';
 import { logout } from '@/utils/common';
-import { useMagic } from '../MagicProvider';
+import { useMagic } from '@/hooks/MagicProvider';
+import useWeb3 from '@/hooks/Web3';
 import Card from '@/components/ui/Card';
 import CardHeader from '@/components/ui/CardHeader';
 import CardLabel from '@/components/ui/CardLabel';
@@ -10,7 +11,8 @@ import Spinner from '@/components/ui/Spinner';
 import { getNetworkName, getNetworkToken } from '@/utils/network';
 
 const UserInfo = ({ token, setToken }: LoginProps) => {
-  const { magic, web3 } = useMagic();
+  const { magic } = useMagic();
+  const web3 = useWeb3();
 
   const [balance, setBalance] = useState('...');
   const [copied, setCopied] = useState('Copy');
@@ -36,6 +38,7 @@ const UserInfo = ({ token, setToken }: LoginProps) => {
     setTimeout(() => checkLoginandGetBalance(), 5000);
   }, []);
 
+  console.log("!!!!!!", web3)
   const getBalance = useCallback(async () => {
     if (publicAddress && web3) {
       const balance = await web3.eth.getBalance(publicAddress);
