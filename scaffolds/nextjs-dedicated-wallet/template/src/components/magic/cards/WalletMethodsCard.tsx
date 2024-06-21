@@ -7,8 +7,8 @@ import { LoginProps } from '@/utils/types';
 import Card from '@/components/ui/Card';
 import CardHeader from '@/components/ui/CardHeader';
 import { LoginMethod } from '@/utils/common';
-<% if (loginMethods.map(authType => authType.replaceAll(" ", "")).includes("EmailOTP")) {%>
-<% -`import UpdateEmail from '../wallet-methods/UpdateEmail'` -%>
+<% if(loginMethods.map(authType => authType.replaceAll(" ", "")).includes("EmailOTP")){%>
+<%-`import UpdateEmail from '../wallet-methods/UpdateEmail'`-%>
 <% }%>
 
 const WalletMethods = ({ token, setToken }: LoginProps) => {
@@ -18,8 +18,8 @@ const WalletMethods = ({ token, setToken }: LoginProps) => {
   return (
     <Card>
       <CardHeader id="methods">User Methods</CardHeader>
-      <% if(loginMethods.map(authType => authType.replaceAll(" ", "")).includes("EmailOTP")){%>
-	  	<% -`{loginMethod && loginMethod == 'EMAIL' && (
+	  <% if(loginMethods.map(authType => authType.replaceAll(" ", "")).includes("EmailOTP")){%>
+	  	<%-`{loginMethod && loginMethod == 'EMAIL' && (
 			<>
 				<UpdateEmail />
 				<Divider />
