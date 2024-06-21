@@ -14,6 +14,7 @@ const HomeContent = () => {
   useEffect(() => {
     const checkLoginStatus = async () => {
       if (magic) {
+        // TODO - Figure out the delay in this
         const startTime = performance.now(); // Start time
         const loggedIn = await magic.user.isLoggedIn();
         const endTime = performance.now(); // End time
